@@ -1,0 +1,51 @@
+.todo-list-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1em;
+}
+
+.todo-list-item button {
+    height: 38px;
+    width: 38px;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    background: var(--first-light-color) linear-gradient(to bottom, var(--first-light-color) 0%, var(--first-dark-color) 100%);
+    transition: .5s;
+}
+
+.todo-list-item button.btn-outline-danger {
+    background: var(--second-light-color) linear-gradient(to bottom, var(--second-light-color) 0%, var(--second-dark-color) 100%);
+}
+
+.todo-list-item:hover button {
+    opacity: 1;
+}
+
+.todo-list-item button + button {
+    margin: 0 8px;
+}
+
+.todo-list-item-label {
+    margin-right: auto;
+    cursor: pointer;
+    user-select: none;
+}
+
+.todo-list-item.done .todo-list-item-label {
+    text-decoration: line-through;
+}
+
+.todo-list-item.important .todo-list-item-label {
+    font-weight: bold;
+    color: var(--first-light-color);
+}
+
+.btn-outline-success:hover, .btn-outline-success:focus{
+    box-shadow: 0 0 0 0.2rem rgba(83, 197, 185, .5);
+}
+
+.btn-outline-danger:hover, .btn-outline-danger:focus{
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.5);
+}

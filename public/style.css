@@ -1,0 +1,87 @@
+:root {
+    --first-light-color: #80e3d1;
+    --first-dark-color: #53c5b9;
+    --second-light-color: #cc697b;
+    --second-dark-color: #a24b61;
+    --middle-blue-color: #384b63;
+    --darker-blue-color: #212d3e;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--second-light-color) linear-gradient(to bottom, var(--second-light-color) 0%, var(--second-dark-color) 100%);
+    font-family: "Roboto", "Open Sans", "Myriad Pro", sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+.app-container {
+    display: flex;
+    height: 80vh;
+    width: 80vw;
+    max-width: 1440px;
+    border-radius: 10px;
+    box-shadow: 0 10px 70px rgba(0, 0, 0, .35);
+    background: var(--middle-blue-color);
+}
+
+.app-container > div {
+    flex: 1;
+}
+
+.left_blank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--first-light-color) linear-gradient(to bottom, var(--first-light-color) 0%, var(--first-dark-color) 100%);
+    padding: 30px 25px;
+}
+
+.left_blank > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.left_blank > div:nth-child(2) {
+    display: block;
+    height: 450px;
+}
+
+.left_blank img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.left_blank h1 {
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.left_blank h3 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 45px;
+    background: var(--middle-blue-color) linear-gradient(to bottom, var(--middle-blue-color) 0%, var(--darker-blue-color) 100%);
+}
+
+button, button:focus {
+    outline: none;
+}
