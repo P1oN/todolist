@@ -1,0 +1,24 @@
+.search-input {
+    width: auto;
+    max-width: 345px;
+    flex-grow: 1;
+
+    color: #717d8d;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    border-bottom: 1px solid #717d8d;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: 0.5s;
+
+    &:hover,
+    &:focus {
+        color: #fff;
+        background-color: transparent;
+        border-color: #fff;
+        outline: 0;
+        box-shadow: none;
+    }
+}

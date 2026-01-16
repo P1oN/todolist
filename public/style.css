@@ -1,13 +1,35 @@
 :root {
-    --first-light-color: #80e3d1;
-    --first-dark-color: #53c5b9;
+    --first-light-color: #7fe3d1;
+    --first-dark-color: #6acfc2;
+    --first-darker-color: #59b9a9;
     --second-light-color: #cc697b;
     --second-dark-color: #a24b61;
-    --middle-blue-color: #384b63;
-    --darker-blue-color: #212d3e;
+    --middle-blue-color: #2a3a4e;
+    --darker-blue-color: #1f2a38;
+
+    --first-contrast-color: #dff8ff;
+    --first-contrast-color-hover: #395962;
+
+    --light-gradient-bottom: linear-gradient(
+        to bottom,
+        /* var(--first-light-color) */ transparent,
+        #2b9184
+    );
+
+    --btn-primary-color: #ffffff40;
+    --btn-primary-color-hover: var(--first-darker-color);
+    --btn-secondary-color: #ffffff40;
+    --btn-secondary-color-hover: #f28b82;
+
+    --border-thin: 1px solid #dddddd50;
+
+    --soft-white: #dadada;
+    --light-gray: #717d8d;
+    --low-light: #d2d2d210;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
@@ -16,19 +38,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--second-light-color) linear-gradient(to bottom, var(--second-light-color) 0%, var(--second-dark-color) 100%);
+    background: var(--second-light-color)
+        linear-gradient(
+            to bottom,
+            var(--second-light-color) 0%,
+            var(--second-dark-color) 100%
+        );
     font-family: "Roboto", "Open Sans", "Myriad Pro", sans-serif;
     font-size: 18px;
     color: white;
 }
 
 .app-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     height: 80vh;
     width: 80vw;
     max-width: 1440px;
     border-radius: 10px;
-    box-shadow: 0 10px 70px rgba(0, 0, 0, .35);
+    overflow: hidden;
+    box-shadow: 0 10px 70px rgba(0, 0, 0, 0.35);
     background: var(--middle-blue-color);
 }
 
@@ -41,7 +70,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background: var(--first-light-color) linear-gradient(to bottom, var(--first-light-color) 0%, var(--first-dark-color) 100%);
+    background: var(--first-light-color)
+        linear-gradient(
+            to bottom,
+            var(--first-light-color) 0%,
+            var(--first-dark-color) 100%
+        );
     padding: 30px 25px;
 }
 
@@ -75,13 +109,16 @@ body {
 }
 
 #root {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 30px 45px;
-    background: var(--middle-blue-color) linear-gradient(to bottom, var(--middle-blue-color) 0%, var(--darker-blue-color) 100%);
+    background: var(--middle-blue-color)
+        linear-gradient(
+            to bottom,
+            var(--middle-blue-color) 0%,
+            var(--darker-blue-color) 100%
+        );
 }
 
-button, button:focus {
+button,
+button:focus {
     outline: none;
 }
