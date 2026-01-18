@@ -11,7 +11,7 @@ const TitleBlock = (props: Props) => {
   return (
     <div className={cn(styles.appHeader, className)} {...rest}>
       <h3>Hey, don`t give up!</h3>
-      <h4>You just have to do a couple of things.</h4>
+      <desc>You just have to do a couple of things.</desc>
       {children}
     </div>
   );
