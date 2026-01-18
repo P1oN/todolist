@@ -3,14 +3,16 @@
     max-width: 345px;
     flex-grow: 1;
 
-    color: #717d8d;
+    color: var(--soft-white);
     border: none;
     border-radius: 0;
     background-color: transparent;
-    border-bottom: 1px solid #717d8d;
-    padding: 12px 0;
+    border-bottom: 1px solid var(--light-gray);
+    padding: 8px 0;
+    height: 1rem;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 300;
+    opacity: 0.6;
     transition: 0.5s;
 
     &:hover,
@@ -18,6 +20,7 @@
         color: #fff;
         background-color: transparent;
         border-color: #fff;
+        opacity: 1;
         outline: 0;
         box-shadow: none;
     }
