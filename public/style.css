@@ -45,15 +45,15 @@ body {
             var(--second-dark-color) 100%
         );
     font-family: "Roboto", "Open Sans", "Myriad Pro", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     color: white;
 }
 
 .app-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 80vh;
-    width: 80vw;
+    height: max(80vh, 750px);
+    width: max(80vw, 1320px);
     max-width: 1440px;
     border-radius: 10px;
     overflow: hidden;
@@ -61,16 +61,14 @@ body {
     background: var(--middle-blue-color);
 }
 
-.app-container > div {
-    flex: 1;
-}
-
 .left_blank {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    background: var(--first-light-color)
+    justify-content: center;
+    gap: min(3vh, 5rem);
+    background:
+        radial-gradient(circle at center right, #ffffff80 0%, transparent 100%),
         linear-gradient(
             to bottom,
             var(--first-light-color) 0%,
@@ -89,22 +87,47 @@ body {
 
 .left_blank > div:nth-child(2) {
     display: block;
-    height: 450px;
+    height: auto;
+    width: min(35%, 235px);
 }
 
 .left_blank img {
     height: 100%;
     width: 100%;
     object-fit: contain;
+    opacity: 0.65;
+    filter: blur(0.4px);
 }
 
-.left_blank h1 {
+h1 {
     font-size: 3rem;
     font-weight: 400;
+    letter-spacing: -0.02em;
 }
 
-.left_blank h3 {
+h2 {
     font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    opacity: 0.8;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 1.75rem;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+h4 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    opacity: 0.8;
+}
+
+desc {
+    font-size: 1.2rem;
     font-weight: 300;
 }
 
