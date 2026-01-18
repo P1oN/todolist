@@ -19,6 +19,7 @@ const ItemAddForm = (props: Props) => {
     if (!label) return;
 
     addTask(createTodoItem(label as string, Date.now()));
+    e.target.reset();
   };
 
   return (
