@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
-  base: "/todolist/",
+export default defineConfig(({ command }) => ({
+  base: command === "serve" ? "/" : "/todolist/",
   plugins: [react()],
   build: {
     outDir: "dist",
@@ -16,4 +16,4 @@ export default defineConfig({
       localsConvention: "camelCaseOnly",
     },
   },
-});
+}));
