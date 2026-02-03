@@ -6,7 +6,9 @@ import styles from "./styles.module.css";
 interface Props
   extends React.HTMLAttributes<HTMLUListElement>, React.PropsWithChildren {}
 
-const VerticalList = (props: Props) => {
+type VerticalListComponent = React.FC<Props> & { Item: typeof Item };
+
+const VerticalList: VerticalListComponent = (props: Props) => {
   const { children, className, ...rest } = props;
   return (
     <ul className={cn(styles.listGroup, className)} {...rest}>

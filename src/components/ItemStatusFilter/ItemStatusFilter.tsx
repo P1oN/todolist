@@ -32,6 +32,7 @@ const ItemStatusFilter = (props: Props) => {
             data-active={isActive}
             type="button"
             onClick={onFilterClick}
+            aria-pressed={isActive}
           >
             {label}
           </button>

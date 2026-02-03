@@ -1,5 +1,5 @@
 import type { FilterType } from "../FilterContext";
-import type { Task } from "./TaskListContext";
+import type { Task } from "../../types/task";
 
 export const createTodoItem = (label: string, id: number, done = false) => {
   return {

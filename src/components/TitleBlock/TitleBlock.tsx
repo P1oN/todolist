@@ -10,8 +10,8 @@ const TitleBlock = (props: Props) => {
   const { children, className, ...rest } = props;
   return (
     <div className={cn(styles.appHeader, className)} {...rest}>
-      <h3>Hey, don`t give up!</h3>
-      <desc>You just have to do a couple of things.</desc>
+      <h3>Hey, don&apos;t give up!</h3>
+      <p>You just have to do a couple of things.</p>
       {children}
     </div>
   );

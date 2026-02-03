@@ -5,15 +5,26 @@ interface SearchContextType {
   setSearchValue: (value: string) => void;
 }
 
-const SearchContext = React.createContext<SearchContextType>({
-  searchValue: "",
-  setSearchValue: () => {},
-});
+const SearchContext = React.createContext<SearchContextType | undefined>(
+  undefined,
+);
 
 interface Props extends React.PropsWithChildren {}
 
+const STORAGE_KEY = "todolist.search";
+
+const loadSearch = () => {
+  if (typeof window === "undefined") return "";
+  return window.localStorage.getItem(STORAGE_KEY) ?? "";
+};
+
 const SearchContextProvider = ({ children }: Props) => {
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState(loadSearch);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEY, searchValue);
+  }, [searchValue]);
 
   return (
     <SearchContext.Provider value={{ searchValue, setSearchValue }}>

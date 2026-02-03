@@ -2,9 +2,14 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  base: "/todolist/",
   plugins: [react()],
   build: {
-    outDir: "build",
+    outDir: "dist",
+  },
+  test: {
+    environment: "jsdom",
+    setupFiles: "./src/test/setup.ts",
   },
   css: {
     modules: {

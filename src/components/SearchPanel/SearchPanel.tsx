@@ -8,10 +8,22 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 const SearchPanel = (props: Props) => {
   const { className, ...rest } = props;
   const { searchValue, setSearchValue } = useSearchContext();
+  const [inputValue, setInputValue] = React.useState(searchValue);
+
+  React.useEffect(() => {
+    setInputValue(searchValue);
+  }, [searchValue]);
+
+  React.useEffect(() => {
+    const handle = window.setTimeout(() => {
+      setSearchValue(inputValue);
+    }, 300);
+
+    return () => window.clearTimeout(handle);
+  }, [inputValue, setSearchValue]);
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value;
-    setSearchValue(term);
+    setInputValue(e.target.value);
   };
 
   return (
@@ -20,7 +32,8 @@ const SearchPanel = (props: Props) => {
       name="search"
       className={cn(styles.searchInput, className)}
       placeholder="Type to search"
-      value={searchValue}
+      aria-label="Search tasks"
+      value={inputValue}
       onChange={onSearchChange}
       {...rest}
     />

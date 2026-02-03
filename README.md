@@ -20,10 +20,27 @@ Quick Start
 5) Preview the production build locally
    npm run preview
 
+Quality
+- Run tests
+  npm run test
+- Run tests once in CI
+  npm run test:run
+- Lint
+  npm run lint
+
 Deployment
+GitHub Pages (recommended)
+- Ensure Vite base is set to "/todolist/" for the repo URL:
+  https://P1oN.github.io/todolist/
 - Build the app
   npm run build
-- Deploy the contents of the dist directory to your hosting provider (Netlify, Vercel, GitHub Pages, etc.)
+- Deploy with GitHub Actions
+  - The workflow in .github/workflows/deploy.yml builds and deploys on push to main.
+  - Enable Pages in repo settings: Source -> GitHub Actions.
+- Manual deploy (fallback)
+  - Upload the contents of dist to a gh-pages branch or a Pages-enabled branch.
+
+Other static hosts
 - Netlify: add netlify.toml with:
   [build]
   command = "npm run build"

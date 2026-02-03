@@ -16,7 +16,7 @@ const Counter = (props: Props) => {
   }
 
   return (
-    <p className={className} {...rest}>
+    <p className={className} aria-live="polite" {...rest}>
       {todoCount} more to do, {doneTasksCount} done
     </p>
   );

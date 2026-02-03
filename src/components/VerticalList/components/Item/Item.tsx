@@ -12,7 +12,7 @@ const Item = (props: Props) => {
 
   const { removeTask, updateTask } = useTaskList();
 
-  function handleItemClick(event: React.MouseEvent<HTMLSpanElement>) {
+  function handleItemClick(event: React.MouseEvent<HTMLLIElement>) {
     event.stopPropagation();
 
     const id = getDataId(event.currentTarget);
@@ -43,6 +43,7 @@ const Item = (props: Props) => {
         type="button"
         className={cn(styles.btn, styles.btnOutlineDanger, styles.btnSmall)}
         onClick={handleItemDelete}
+        aria-label="Delete task"
       >
         <i className="fa fa-trash-o" />
       </button>
