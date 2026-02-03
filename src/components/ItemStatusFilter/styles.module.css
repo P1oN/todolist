@@ -5,14 +5,14 @@
     justify-content: end;
 
     & button {
-        color: var(--light-gray);
-        border: 1px solid #4c5d72;
+        color: var(--filter-button-text);
+        border: 1px solid var(--filter-button-border);
         font-size: 1rem;
         line-height: 1;
         font-weight: 700;
         cursor: pointer;
         padding: 12px 15px;
-        background-color: #4c5d72;
+        background-color: var(--filter-button-bg);
         box-shadow: inset 0px 0px 0px rgba(255, 255, 255, 0.35);
         transition:
             0.5s box-shadow,
@@ -20,9 +20,9 @@
             0.5s color;
 
         &[data-active="true"] {
-            color: var(--first-contrast-color);
+            color: var(--filter-button-active-text);
             background: var(--light-gradient-bottom);
-            background-color: var(--first-light-color);
+            background-color: var(--filter-button-active-bg);
             box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.35);
 
             &:first-child {

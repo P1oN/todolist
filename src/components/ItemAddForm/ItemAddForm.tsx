@@ -34,6 +34,7 @@ const ItemAddForm = (props: Props) => {
           name="task-label"
           placeholder="What needs to be done"
           aria-label="Task"
+          autoFocus
         />
         <button type="submit">Add Item</button>
       </div>

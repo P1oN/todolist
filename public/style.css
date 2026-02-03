@@ -1,4 +1,5 @@
 :root {
+    --container-width: min(80vw, 1320px);
     --first-light-color: #7fe3d1;
     --first-dark-color: #6acfc2;
     --first-darker-color: #59b9a9;
@@ -26,6 +27,13 @@
     --soft-white: #dadada;
     --light-gray: #717d8d;
     --low-light: #d2d2d210;
+    --title-accent: #6fe3c1;
+    --text-color: #ffffff;
+    --filter-button-bg: #4c5d72;
+    --filter-button-border: #4c5d72;
+    --filter-button-text: #717d8d;
+    --filter-button-active-bg: var(--first-light-color);
+    --filter-button-active-text: var(--first-contrast-color);
 }
 
 html,
@@ -46,7 +54,37 @@ body {
         );
     font-family: "Roboto", "Open Sans", "Myriad Pro", sans-serif;
     font-size: 16px;
-    color: white;
+    color: var(--text-color);
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+:root[data-theme="light"],
+body[data-theme="light"] {
+    --first-light-color: #86d9cf;
+    --first-dark-color: #6bc3b9;
+    --first-darker-color: #4aa8a0;
+    --second-light-color: #f6d6dc;
+    --second-dark-color: #efc0c9;
+    --middle-blue-color: #f2f4f8;
+    --darker-blue-color: #e3e8ef;
+    --first-contrast-color: #2a3a4e;
+    --first-contrast-color-hover: #1f2a38;
+    --btn-primary-color: #2a3a4e20;
+    --btn-primary-color-hover: #2a3a4e35;
+    --btn-secondary-color: #2a3a4e20;
+    --btn-secondary-color-hover: #c26a79;
+    --soft-white: #2a3a4e;
+    --light-gray: #5b6a7d;
+    --low-light: #ffffff70;
+    --title-accent: #2f8d7c;
+    --text-color: #1f2a38;
+    --filter-button-bg: #d5dde8;
+    --filter-button-border: #c9d3e1;
+    --filter-button-text: #5b6a7d;
+    --filter-button-active-bg: #7ecfc6;
+    --filter-button-active-text: #1f2a38;
 }
 
 .app-container {
@@ -54,11 +92,37 @@ body {
     grid-template-columns: 1fr 1fr;
     height: max(80vh, 750px);
     width: max(80vw, 1320px);
-    max-width: 1440px;
+    max-width: var(--container-width);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 70px rgba(0, 0, 0, 0.35);
     background: var(--middle-blue-color);
+    transition:
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+html[data-booting="true"] .app-container,
+body[data-booting="true"] .app-container {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body[data-left-hidden="true"] .app-container,
+.app-container[data-left-hidden="true"] {
+    grid-template-columns: 1fr;
+}
+
+body[data-left-hidden="true"] .left_blank,
+.app-container[data-left-hidden="true"] .left_blank {
+    display: none;
+}
+
+.app-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
 }
 
 .left_blank {
@@ -75,6 +139,9 @@ body {
             var(--first-dark-color) 100%
         );
     padding: 30px 25px;
+    transition:
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .left_blank > div:first-child {
@@ -136,7 +203,7 @@ p {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
+    margin: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -151,9 +218,30 @@ p {
             var(--middle-blue-color) 0%,
             var(--darker-blue-color) 100%
         );
+    transition:
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 button,
 button:focus {
     outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--light-gray);
+    box-shadow: 0 0 0 1000px transparent inset;
+    transition: background-color 9999s ease-in-out 0s;
+    caret-color: var(--light-gray);
 }

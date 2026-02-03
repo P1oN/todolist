@@ -18,6 +18,27 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="style.css" />
+        <script>
+            (function () {
+                try {
+                    document.documentElement.dataset.booting = "true";
+                    var raw = window.localStorage.getItem("todolist.settings");
+                    if (!raw) return;
+                    var settings = JSON.parse(raw);
+                    if (!settings || typeof settings !== "object") return;
+                    var hideLeft = Boolean(settings.hideLeftSide);
+                    var theme = settings.theme === "light" ? "light" : "dark";
+                    document.documentElement.dataset.theme = theme;
+                    if (document.body) {
+                        document.body.dataset.booting = "true";
+                        document.body.dataset.theme = theme;
+                        document.body.dataset.leftHidden = hideLeft ? "true" : "false";
+                    }
+                } catch (e) {
+                    return;
+                }
+            })();
+        </script>
         <script type="module" src="/src/app.jsx" async></script>
         <title>Todo App</title>
     </head>

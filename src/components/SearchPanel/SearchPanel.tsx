@@ -26,17 +26,35 @@ const SearchPanel = (props: Props) => {
     setInputValue(e.target.value);
   };
 
+  const onClearSearch = () => {
+    setInputValue("");
+    setSearchValue("");
+  };
+
+  const isClearVisible = inputValue.length > 0;
+
   return (
-    <input
-      type="text"
-      name="search"
-      className={cn(styles.searchInput, className)}
-      placeholder="Type to search"
-      aria-label="Search tasks"
-      value={inputValue}
-      onChange={onSearchChange}
-      {...rest}
-    />
+    <div className={cn(styles.searchWrapper, className)}>
+      <input
+        type="text"
+        name="search"
+        className={styles.searchInput}
+        placeholder="Type to search"
+        aria-label="Search tasks"
+        value={inputValue}
+        onChange={onSearchChange}
+        {...rest}
+      />
+      <button
+        type="button"
+        className={styles.clearButton}
+        onClick={onClearSearch}
+        disabled={!isClearVisible}
+        aria-label="Clear search"
+      >
+        Clear
+      </button>
+    </div>
   );
 };
 

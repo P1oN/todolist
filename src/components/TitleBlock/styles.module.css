@@ -18,6 +18,6 @@
     }
 
     & > p {
-        color: #6fe3c1;
+        color: var(--title-accent);
     }
 }

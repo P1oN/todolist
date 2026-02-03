@@ -1,0 +1,82 @@
+.settings-panel {
+    position: fixed;
+    right: calc((100vw - var(--container-width)) / 2 + 20px);
+    bottom: 76px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: min(160px, calc(var(--container-width) - 40px));
+    padding: 18px 20px;
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at top, var(--low-light), transparent),
+        radial-gradient(circle at bottom, var(--low-light), transparent),
+        linear-gradient(to right, var(--darker-blue-color), transparent);
+    border: var(--border-thin);
+    z-index: 10;
+    animation: settings-fade-in 0.18s ease-out;
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.is-closing {
+    animation: settings-fade-out 0.18s ease-in forwards;
+}
+
+@keyframes settings-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes settings-fade-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+
+.settings-header {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--light-gray);
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-items: center;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--soft-white);
+}
+
+.toggle input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--first-light-color);
+}
+
+.toggle input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
