@@ -1,10 +1,13 @@
 import js from "@eslint/js";
+import globals from "globals";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import vitest from "eslint-plugin-vitest";
 import tsParser from "@typescript-eslint/parser";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
+
+const sourceFiles = ["**/*.{js,jsx,ts,tsx}"];
 
 const baseConfig = {
   languageOptions: {
@@ -15,12 +18,8 @@ const baseConfig = {
       ecmaFeatures: { jsx: true },
     },
     globals: {
-      window: "readonly",
-      document: "readonly",
-      localStorage: "readonly",
-      console: "readonly",
-      setTimeout: "readonly",
-      clearTimeout: "readonly",
+      ...globals.browser,
+      ...globals.es2021,
     },
   },
   settings: {
@@ -34,6 +33,7 @@ export default [
   },
   js.configs.recommended,
   {
+    files: sourceFiles,
     ...baseConfig,
     plugins: {
       "@typescript-eslint": tsPlugin,
