@@ -188,6 +188,12 @@ body[data-left-hidden="true"] #root {
   font-size: 11px;
   color: #fff;
 }
+.portfolio-link {
+  color: inherit;
+  padding: 4px;
+  margin-right: 10px;
+  text-underline-offset: 3px;
+}
 #demosBtn {
   background: none;
   border: 0;
