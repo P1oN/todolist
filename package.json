@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "demo-registry-widget": "^1.0.2",
+    "demo-registry-widget": "^1.1.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
