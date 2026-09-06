@@ -39,7 +39,7 @@ const SearchPanel = (props: Props) => {
         type="text"
         name="search"
         className={styles.searchInput}
-        placeholder="Type to search"
+        placeholder="Search your tasks"
         aria-label="Search tasks"
         value={inputValue}
         onChange={onSearchChange}
@@ -52,7 +52,7 @@ const SearchPanel = (props: Props) => {
         disabled={!isClearVisible}
         aria-label="Clear search"
       >
-        Clear
+        ×
       </button>
     </div>
   );

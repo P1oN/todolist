@@ -17,13 +17,14 @@ interface TaskListContextType {
   updateTask: (id: number, task: Partial<Omit<Task, "id">>) => void;
 }
 
-const TaskListContext =
-  React.createContext<TaskListContextType | undefined>(undefined);
+const TaskListContext = React.createContext<TaskListContextType | undefined>(
+  undefined,
+);
 
 const defaultTaskList = [
-  createTodoItem("First Element", 1),
-  createTodoItem("Learn React", 2),
-  createTodoItem("Build React App", 3),
+  createTodoItem("Make a little plan for today", 1),
+  createTodoItem("Take a walk outside", 2),
+  createTodoItem("Make time for something you enjoy", 3),
 ];
 
 type TaskAction =

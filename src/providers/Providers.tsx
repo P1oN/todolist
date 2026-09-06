@@ -1,3 +1,4 @@
+import type React from "react";
 import { FilterContextProvider } from "../contexts/FilterContext";
 import { SearchContextProvider } from "../contexts/SearchContext";
 import { SettingsContextProvider } from "../contexts/SettingsContext";

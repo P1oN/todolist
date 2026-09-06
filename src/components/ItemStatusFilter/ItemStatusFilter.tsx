@@ -9,9 +9,7 @@ const buttonsList: Array<{ name: FilterType; label: string }> = [
   { name: "done", label: "Done" },
 ];
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {}
-
-const ItemStatusFilter = (props: Props) => {
+const ItemStatusFilter = () => {
   const { filter, onFilterChange } = useFilterContext();
 
   const onFilterClick = (e: React.MouseEvent<HTMLButtonElement>) => {

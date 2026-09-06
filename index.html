@@ -1,82 +1,87 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="shortcut icon" href="%BASE_URL%favicon.ico" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%BASE_URL%favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%BASE_URL%apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%BASE_URL%favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="%BASE_URL%favicon-16x16.png"
+    />
+    <link rel="manifest" href="%BASE_URL%site.webmanifest" />
+    <link rel="stylesheet" href="%BASE_URL%style.css" />
+    <script>
+      (function () {
+        try {
+          document.documentElement.dataset.booting = "true";
+          var raw = window.localStorage.getItem("todolist.settings");
+          if (!raw) return;
+          var settings = JSON.parse(raw);
+          if (!settings || typeof settings !== "object") return;
+          var hideLeft = Boolean(settings.hideLeftSide);
+          var theme = settings.theme === "light" ? "light" : "dark";
+          document.documentElement.dataset.theme = theme;
+          if (document.body) {
+            document.body.dataset.booting = "true";
+            document.body.dataset.theme = theme;
+            document.body.dataset.leftHidden = hideLeft ? "true" : "false";
+          }
+        } catch (e) {
+          return;
+        }
+      })();
+    </script>
+    <script type="module" src="/src/app.jsx" async></script>
+    <title>Todo App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <main class="app-container">
+      <aside class="left_blank" aria-label="Schedule Book">
+        <div class="cover-top">
+          <span class="book-mark">SB /</span
+          ><span>A LITTLE SPACE FOR YOUR DAY</span>
+        </div>
+        <div class="cover-title">
+          <p class="eyebrow">MAKE ROOM FOR WHAT MATTERS</p>
+          <h1>Schedule<br /><em>Book.</em></h1>
+          <p class="cover-description">
+            Small steps.<br />A little more possibility.
+          </p>
+        </div>
+        <img
+          class="landscape"
+          src="%BASE_URL%landscape.svg"
+          alt="A winding path through quiet mountains towards the sun"
         />
-        <meta name="theme-color" content="#000000" />
-        <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="%BASE_URL%apple-touch-icon.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="%BASE_URL%favicon-32x32.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="%BASE_URL%favicon-16x16.png"
-        />
-        <link rel="manifest" href="%BASE_URL%site.webmanifest" />
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        />
-        <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic-ext"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="%BASE_URL%style.css" />
-        <script>
-            (function () {
-                try {
-                    document.documentElement.dataset.booting = "true";
-                    var raw = window.localStorage.getItem("todolist.settings");
-                    if (!raw) return;
-                    var settings = JSON.parse(raw);
-                    if (!settings || typeof settings !== "object") return;
-                    var hideLeft = Boolean(settings.hideLeftSide);
-                    var theme = settings.theme === "light" ? "light" : "dark";
-                    document.documentElement.dataset.theme = theme;
-                    if (document.body) {
-                        document.body.dataset.booting = "true";
-                        document.body.dataset.theme = theme;
-                        document.body.dataset.leftHidden = hideLeft
-                            ? "true"
-                            : "false";
-                    }
-                } catch (e) {
-                    return;
-                }
-            })();
-        </script>
-        <script type="module" src="/src/app.jsx" async></script>
-        <title>Todo App</title>
-    </head>
-    <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
-        <main class="app-container">
-            <div class="left_blank">
-                <div>
-                    <h1>Schedule Book</h1>
-                    <h2>
-                        Plan your activities<br />
-                        and control your progress
-                    </h2>
-                </div>
-                <div>
-                    <img src="%BASE_URL%pic.webp" alt="Nice pic" />
-                </div>
-            </div>
-            <section id="root"></section>
-        </main>
-    </body>
+        <div class="cover-footer">
+          <span>GO AT YOUR OWN PACE</span><span>↗</span>
+        </div>
+      </aside>
+      <section id="root"></section>
+      <section class="demo-navigation" aria-label="Other projects">
+        <button id="demosBtn" aria-expanded="false">Demos</button>
+        <div id="demosPopover">
+          <div id="demosContent"></div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

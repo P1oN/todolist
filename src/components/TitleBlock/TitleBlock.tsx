@@ -1,22 +1,13 @@
 import React from "react";
-import { cn } from "../../utils/cn";
 import { Counter } from "./components/Counter";
 import styles from "./styles.module.css";
-
-interface Props
-  extends React.HTMLAttributes<HTMLHeadingElement>, React.PropsWithChildren {}
-
-const TitleBlock = (props: Props) => {
-  const { children, className, ...rest } = props;
-  return (
-    <div className={cn(styles.appHeader, className)} {...rest}>
-      <h3>Hey, don&apos;t give up!</h3>
-      <p>You just have to do a couple of things.</p>
-      {children}
-    </div>
-  );
-};
-
+const TitleBlock = ({ children }: React.PropsWithChildren) => (
+  <div className={styles.appHeader}>
+    <p className={styles.eyebrow}>A LITTLE FOCUS, EVERY DAY</p>
+    <h3>One thing at a time.</h3>
+    <p>Make a little space for what’s next.</p>
+    {children}
+  </div>
+);
 TitleBlock.Counter = Counter;
-
 export { TitleBlock };

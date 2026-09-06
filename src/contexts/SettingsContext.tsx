@@ -44,7 +44,7 @@ const loadSettings = (): SettingsState => {
       hideTitleBlock: Boolean(parsed.hideTitleBlock),
       theme,
     };
-  } catch (error) {
+  } catch {
     return defaultSettings;
   }
 };

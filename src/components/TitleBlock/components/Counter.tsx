@@ -1,25 +1,27 @@
-import React from "react";
 import { useTaskList } from "../../../contexts/TaskListContext/TaskListContext";
-
-interface Props extends React.HTMLAttributes<HTMLParagraphElement> {}
-
-const Counter = (props: Props) => {
-  const { className, ...rest } = props;
-
-  const { tasks } = useTaskList();
-
-  const doneTasksCount = tasks.filter((task) => task.done).length;
-  const todoCount = tasks.length - doneTasksCount;
-
-  if (todoCount === 0 && doneTasksCount === 0) {
-    return null;
-  }
-
+import styles from "../styles.module.css";
+const Counter = () => {
+  const { rawTasks } = useTaskList();
+  const done = rawTasks.filter((task) => task.done).length;
+  if (!rawTasks.length) return null;
   return (
-    <p className={className} aria-live="polite" {...rest}>
-      {todoCount} more to do, {doneTasksCount} done
-    </p>
+    <div className={styles.progress}>
+      <div className={styles.progressLabel} aria-live="polite">
+        <span>
+          {done} of {rawTasks.length} completed
+        </span>
+        <span>
+          {done === rawTasks.length
+            ? "Nicely done."
+            : `${rawTasks.length - done} to go`}
+        </span>
+      </div>
+      <progress
+        value={done}
+        max={rawTasks.length}
+        aria-label="Tasks completed"
+      />
+    </div>
   );
 };
-
 export { Counter };

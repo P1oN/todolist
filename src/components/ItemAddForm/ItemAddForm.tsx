@@ -1,12 +1,14 @@
 import React from "react";
 import { useTaskList } from "../../contexts/TaskListContext/TaskListContext";
 import { createTodoItem } from "../../contexts/TaskListContext/utils";
+import { useFilterContext } from "../../contexts/FilterContext";
+import { useSearchContext } from "../../contexts/SearchContext";
 import styles from "./styles.module.css";
 
-interface Props extends React.ComponentProps<"form"> {}
-
-const ItemAddForm = (props: Props) => {
+const ItemAddForm = () => {
   const { addTask } = useTaskList();
+  const { onFilterChange } = useFilterContext();
+  const { setSearchValue } = useSearchContext();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,7 +21,10 @@ const ItemAddForm = (props: Props) => {
     if (!label) return;
 
     addTask(createTodoItem(label, Date.now()));
+    onFilterChange("all");
+    setSearchValue("");
     e.target.reset();
+    e.target.querySelector("input")?.focus();
   };
 
   return (
@@ -32,12 +37,16 @@ const ItemAddForm = (props: Props) => {
           type="text"
           id="task-label"
           name="task-label"
-          placeholder="What needs to be done"
+          placeholder="What’s your next small step?"
           aria-label="Task"
-          autoFocus
         />
-        <button type="submit">Add Item</button>
+        <button type="submit" aria-label="Add item">
+          + Add task
+        </button>
       </div>
+      <p className={styles.hint}>
+        Just for you. Your tasks stay in this browser.
+      </p>
     </form>
   );
 };

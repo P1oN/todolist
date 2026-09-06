@@ -44,8 +44,18 @@ const AppContent = () => {
       setIsSettingsOpen(false);
     };
 
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsSettingsOpen(false);
+        settingsToggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
     document.addEventListener("mousedown", onPointerDown);
-    return () => document.removeEventListener("mousedown", onPointerDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, [isSettingsOpen]);
 
   React.useEffect(() => {
@@ -53,7 +63,9 @@ const AppContent = () => {
 
     const appContainer = document.querySelector(".app-container");
     if (appContainer instanceof HTMLElement) {
-      appContainer.dataset.leftHidden = settings.hideLeftSide ? "true" : "false";
+      appContainer.dataset.leftHidden = settings.hideLeftSide
+        ? "true"
+        : "false";
     }
 
     document.body.dataset.leftHidden = settings.hideLeftSide ? "true" : "false";
@@ -65,19 +77,19 @@ const AppContent = () => {
 
   return (
     <article className={styles.app}>
-      <button
-        type="button"
-        className={styles.settingsToggle}
-        onClick={() => setIsSettingsOpen((open) => !open)}
-        aria-expanded={isSettingsOpen}
-        ref={settingsToggleRef}
-      >
-        {isSettingsOpen ? "Hide settings" : "Settings"}
-      </button>
-      <header>
-        <SearchPanel />
-        <ItemStatusFilter />
-      </header>
+      <div className={styles.toolbar}>
+        <span className={styles.brand}>Your daily notebook</span>
+        <button
+          type="button"
+          className={styles.settingsToggle}
+          onClick={() => setIsSettingsOpen((open) => !open)}
+          aria-expanded={isSettingsOpen}
+          ref={settingsToggleRef}
+        >
+          {isSettingsOpen ? "Hide settings" : "Settings"}
+        </button>
+      </div>
+
       {isSettingsVisible && (
         <SettingsPanel
           ref={settingsRef}
@@ -89,6 +101,10 @@ const AppContent = () => {
           <TitleBlock.Counter />
         </TitleBlock>
       )}
+      <header>
+        <SearchPanel />
+        <ItemStatusFilter />
+      </header>
       <TasksList />
       <ItemAddForm />
     </article>
